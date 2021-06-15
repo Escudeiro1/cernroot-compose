@@ -1,0 +1,21 @@
+version: '3.6'
+
+x-default: &default
+  image: asagalo/cernroot-docker:latest
+  environment:
+    DISPLAY: ${HOST_DISPLAY}
+  stdin_open: true
+  tty: true
+  user: "${UID}"
+  volumes:
+    - /tmp/.X11-unix:/tmp/.X11-unix
+    - ./data:/app
+
+services:
+  root:
+    <<: *default
+    command: bash -c 'root'
+
+  cubix:
+    <<: *default
+    command: bash -c 'Cubix'

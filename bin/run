@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ "$(uname)" == "Darwin" ]; then
+    # Darwin platform
+    ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+    xhost + $ip
+    export HOST_DISPLAY=$ip:0
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # GNU/Linux platform
+    export HOST_DISPLAY=$DISPLAY
+fi
+
+docker-compose run --rm $@
