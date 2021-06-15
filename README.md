@@ -1,6 +1,14 @@
 # cernroot-compose
 
 ## USAGE
+### install
+
+```bash 
+git clone git@github.com:Escudeiro1/cernroot-compose.git
+cd cernroot-compose
+```
+*note: every content in ./data folder will be shared at /data folder inside the running container*
+
 ### To run root
 
 ```bash
